@@ -1,4 +1,4 @@
-package models
+package models;
 
 import java.util.*;
 import javax.persistence.*;
@@ -9,7 +9,6 @@ import play.data.validation.*;
 import com.avaje.ebean.*;
 
 // Product Entity managed by the ORM
-
 @Entity
 
 public class Product extends Model {
@@ -18,16 +17,25 @@ public class Product extends Model {
 	// Annotate "id" as the Primary Key
 	@Id
 	private Long id;
+
+	// Other fields marked as being required (for validation purposes)
+	@Constraints.Required
 	private String name;
+	
+	@Constraints.Required
 	private String description;
+
+	@Constraints.Required
 	private int stock;
+
+	@Constraints.Required
 	private double price;
 
-	//default constructor
+	// Default Constructor
 	public Product() {
 	}
 
-	//constructor to initialise object
+	// Constructor to initialise object
 	public Product(Long id, String name, String description, int stock, double price) {
 		this.id = id;
 		this.name = name;
